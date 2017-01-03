@@ -1,8 +1,26 @@
 #img-place{
-	height: 100px;
-	width: 100px;
+	
+	border: 1px solid;
+	margin-top: 80px;
+	/*padding-left: 10%;
+	padding-right: 10%;*/
+	
 }
 
 img{
-	transform: scale(.5, .5);
+	/*object-fit: contain;*/
+	/*yellow*/
+	width: 400px;
+  	height: 400px;
+
+  	/*else*/
+  	/*width: 800px;
+  	height: 600px;*/
+
+	
+	
+}
+
+button{
+	margin-top: 80px;
 }
