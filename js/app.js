@@ -18,16 +18,37 @@ leftButton.addEventListener('click', function(){
 	if(index < 0){
 		index = images.length - 1;
 	}
-
+	
 	imagePlace.innerHTML = '<img class="img-responsive" src="images/' + images[index] + '-rose.jpg">';
 	index--;
 });
 
-rightButton.addEventListener('click', function(){
-	if(index == images.length){
-		index = 0;
-	}
+// rightButton.addEventListener('click', function(){
+// 	if(index == images.length){
+// 		index = 0;
+// 	}
 
-	imagePlace.innerHTML = '<img class="img-responsive" src="images/' + images[index] + '-rose.jpg">';
-	index++;
+
+
+// 	imagePlace.innerHTML = '<img class="img-responsive" src="images/' + images[index] + '-rose.jpg">';
+// 	index++;
+// });
+
+rightButton.addEventListener('click', function(){ 
+	$( "#flower" ).fadeOut(1000, function(){
+		if(index == images.length){
+			index = 0;
+		}
+		console.log(images[index]);
+
+		imagePlace.innerHTML = '<img class="img-responsive" src="images/rainbow-rose.jpg">';
+		index++;
+		$( "#flower" ).fadeIn(2000);
+
+
+	});
+
+	
+	 			
+  
 });
