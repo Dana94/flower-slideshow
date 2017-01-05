@@ -3,6 +3,7 @@ let rightButton = document.getElementById('right');
 let imagePlace = document.getElementById('img-place');
 
 let images = ['yellow', 'blue', 'purple', 'rainbow'];
+let image = '';
 let index = 0;
 
 // function resize(img){
@@ -15,40 +16,23 @@ let index = 0;
 // }
 
 leftButton.addEventListener('click', function(){
-	if(index < 0){
-		index = images.length - 1;
-	}
-	
-	imagePlace.innerHTML = '<img class="img-responsive" src="images/' + images[index] + '-rose.jpg">';
-	index--;
+	$("#img-place").fadeOut(1000, function(){
+		index--;
+		if(index < 0){
+			index = images.length - 1;
+		}
+		$(this).html('<img id="flower" class="img-responsive" src="images/' + images[index] + '-rose.jpg">');
+	}); 
+	$("#img-place").fadeIn(2000);
 });
 
-// rightButton.addEventListener('click', function(){
-// 	if(index == images.length){
-// 		index = 0;
-// 	}
-
-
-
-// 	imagePlace.innerHTML = '<img class="img-responsive" src="images/' + images[index] + '-rose.jpg">';
-// 	index++;
-// });
-
 rightButton.addEventListener('click', function(){ 
-	$( "#flower" ).fadeOut(1000, function(){
+	$("#img-place").fadeOut(1000, function(){
+		index++;
 		if(index == images.length){
 			index = 0;
 		}
-		console.log(images[index]);
-
-		imagePlace.innerHTML = '<img class="img-responsive" src="images/rainbow-rose.jpg">';
-		index++;
-		$( "#flower" ).fadeIn(2000);
-
-
-	});
-
-	
-	 			
-  
+		$(this).html('<img id="flower" class="img-responsive" src="images/' + images[index] + '-rose.jpg">');
+	}); 
+	$("#img-place").fadeIn(2000);
 });

@@ -1,36 +1,21 @@
 #img-place{
-	
-	border: 1px solid;
 	margin-top: 4%;
 	padding-left: 10%;
-	padding-right: 10%;
-
-	
+	padding-right: 10%;	
 }
 
 .buttons{
 	padding-top: 20%;
 }
 
-
-
 img{
 	object-fit: contain;
-/*	position: center;*/
-	/*yellow*/
-	/*width: 400px;
-  	height: 400px;*/
-
-  	/*else*/
-  	/*width: 800px;
-  	height: 600px;*/
-
-	
-	
+	box-shadow: 10px 5px 5px black;	
 }
 
 button{
 	width: 100px;
+	border: 5px solid;
 }
 
 #left{
