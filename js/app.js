@@ -1,7 +1,7 @@
 let leftButton = document.getElementById('left');
 let rightButton = document.getElementById('right');
 let imagePlace = document.getElementById('img-place');
-let image = document.getElementById('flower');
+let image = document.getElementsByClassName('flower');
 
 let images = ['yellow', 'blue', 'purple', 'rainbow'];
 let index = 0;
@@ -12,7 +12,7 @@ function moveRight(){
 		if(index == images.length){
 			index = 0;
 		}
-		image.setAttribute('src', "images/" + images[index] + "-rose.jpg");
+		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");
 	}); 
 	$("#img-place").fadeIn(2000);
 }
@@ -23,7 +23,7 @@ function moveLeft(){
 		if(index < 0){
 			index = images.length - 1;
 		}
-		image.setAttribute('src', "images/" + images[index] + "-rose.jpg");
+		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");
 	}); 
 	$("#img-place").fadeIn(2000);
 };
@@ -31,7 +31,7 @@ function moveLeft(){
 let timer;
 
 function startTimer(){
-	timer = window.setInterval(moveRight, 5000);
+	timer = window.setInterval(moveRight, 10000);
 }
 
 // function stopTimer(){
@@ -44,7 +44,7 @@ function startTimer(){
 // 	//document.addEventListener('click', startTimer);
 // }
 
-window.addEventListener('load', startTimer);
+//window.addEventListener('load', startTimer);
 
 leftButton.addEventListener('click', moveLeft);
 rightButton.addEventListener('click', moveRight);
