@@ -6,6 +6,15 @@ let image = document.getElementsByClassName('flower');
 let images = ['yellow', 'blue', 'purple', 'rainbow'];
 let index = 0;
 
+// function resize(){
+// 	if (image[0].getAttribute('src') == "images/yellow-rose.jpg"){
+		
+// 	}
+// 	else{
+// 		image[0].css('width', 100%).css('height', 0);
+// 	}
+// }
+
 function moveRight(){
 	$("#img-place").fadeOut(1000, function(){
 		index++;
