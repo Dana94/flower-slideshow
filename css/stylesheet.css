@@ -1,19 +1,14 @@
-.blocks{
-	/*border: 4px solid purple;*/
-	/*margin-bottom: -10%;*/
-	
-}
 
 #frame{
-	/*border: 4px solid red;	*/
-	/*height: 550px;*/
-	margin-top: 4%;
+	border: 4px solid red;	
+	
+	
 
 
 }
 
 #img-place{
-	/*border: 4px solid;*/
+	border: 4px solid;
 	
 	padding-left: 15%;
 	padding-right: 15%;	
@@ -21,17 +16,13 @@
 
 	
 
-	height: 450px;
+	/*height: 580px;*/
 	
 	
 }
 
 .flower{
-	transform: scale(.7,.7);
-	margin-top: -20%;
-	width: 100%;
-	height: 100%;
-
+	transform: scale(.8,.8);
 }
 
 .buttons{
@@ -39,18 +30,7 @@
 }
 
 img{
-	/*object-fit: contain;*/
-	box-shadow: 10px 5px 5px black;	
-	/*height: 100%;*/
-
-}
-
-#yellow{
-	
-	transform: scale(.8,.8);
-	margin-top: -12%;
-	margin-bottom: -33%;
-
+	box-shadow: 10px 5px 5px black;
 }
 
 button{
