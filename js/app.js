@@ -3,22 +3,24 @@ let rightButton = document.getElementById('right');
 let imagePlace = document.getElementById('img-place');
 let image = document.getElementsByClassName('flower');
 
-let images = ['blue', 'yellow', 'purple', 'rainbow'];
+let images = ['rainbow'];
 let index = 0;
 
 
-// function resize(){
-// 	if (image[0].height > image[0].width){
-// 			console.log('y');
-// 			$('#img-place').css('margin-top', -30);
-// 			$("#img-place").css('height', 500);
-// 		}
-// 		else{
-// 			console.log('n');
-// 			$('#img-place').css('padding-top', 30);
-// 			$("#img-place").css('height', 450);
-// 		}
-//  }
+function resize(){
+	if (image[0].height > image[0].width){
+			console.log('y');
+			
+			// $('.flower').css('margin-top', -50);
+			// $('.flower').css('margin-bottom', -50);
+			
+		}
+		else{
+			console.log('n h: ' + image[0].height + ' w: ' + image[0].width);
+			// $('#img-place').css('padding-top', 120);
+			
+		}
+ }
 
 function moveRight(){
 	$("#img-place").fadeOut(1000, function(){
@@ -26,21 +28,11 @@ function moveRight(){
 		if(index == images.length){
 			index = 0;
 		}
+		
 		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");
-
-		if (image[0].height > image[0].width){
-			console.log('y');
-			$('#img-place').css('margin-top', 0);
-			$("#img-place").css('height', 555);
-		}
-		else{
-			console.log('n');
-			$('#img-place').css('padding-top', 60);
-			// $('#img-place').css('padding-bottom', -60);
-			$("#img-place").css('height', 570);
-		}
 	}); 
 	$("#img-place").fadeIn(2000);
+	
 }
 
 function moveLeft(){
@@ -76,6 +68,6 @@ function startTimer(){
 //leftButton.addEventListener('click',resize);
 leftButton.addEventListener('click', moveLeft);
 
-//rightButton.addEventListener('click', resize);
+rightButton.addEventListener('click', resize);
 rightButton.addEventListener('click', moveRight);
 

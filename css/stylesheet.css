@@ -1,6 +1,6 @@
 
 #frame{
-	border: 4px solid red;	
+	/*border: 4px solid red;	*/
 	
 	
 
@@ -8,21 +8,17 @@
 }
 
 #img-place{
-	border: 4px solid;
+	/*border: 4px solid;*/
 	
 	padding-left: 15%;
 	padding-right: 15%;	
-
-
-	
-
-	/*height: 580px;*/
+	height: 540px;
 	
 	
 }
 
 .flower{
-	transform: scale(.8,.8);
+	transform: scale(.9,.9);
 }
 
 .buttons{
