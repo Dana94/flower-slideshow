@@ -3,7 +3,7 @@ let rightButton = document.getElementById('right');
 let imagePlace = document.getElementById('img-place');
 let image = document.getElementsByClassName('flower');
 
-let images = ['rainbow'];
+let images = ['rainbow', 'yellow', 'purple', 'blue'];
 let index = 0;
 
 
@@ -28,11 +28,9 @@ function moveRight(){
 		if(index == images.length){
 			index = 0;
 		}
-		
-		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");
+		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");	
 	}); 
 	$("#img-place").fadeIn(2000);
-	
 }
 
 function moveLeft(){
@@ -68,6 +66,6 @@ function startTimer(){
 //leftButton.addEventListener('click',resize);
 leftButton.addEventListener('click', moveLeft);
 
-rightButton.addEventListener('click', resize);
+//rightButton.addEventListener('click', resize);
 rightButton.addEventListener('click', moveRight);
 
