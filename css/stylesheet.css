@@ -1,29 +1,28 @@
-body{
-	background-color: blue;/*#272222;*/
+div{
+	background: #272222;
+	margin-bottom: 0;
 }
 
 
 #img-place{
-	border: 4px solid;
-	height: 620px;
-	margin-top: -3%;
-	
-	
-	
+	border-left: 4px solid;
+	border-top: 4px solid;
+	height: 608px;
+	padding: 0 auto;
+	padding-top: 2%;
+	/*padding-left: 8%;
+	padding-right: 8%;*/
 }
 
 .flower{
 	transform: scale(.9,.9);
 	object-fit: fill;
-}
-
-.buttons{
-	padding-top: 20%;
+	box-shadow: 10px 5px 5px black;
 }
 
 img{
 	box-shadow: 10px 5px 5px black;
-	margin: auto;
+	
 }
 
 button{
@@ -31,10 +30,24 @@ button{
 	border: 5px solid;
 }
 
+#buttons{
+	border-left: 4px solid;
+}
+
 #left{
-	margin-left: 60%;
+	margin-left: 70%;
 }
 
 #right{
-	margin-right: 60%;
+	margin-right: 70%;
+}
+
+#gallery{
+	border: 4px solid;
+	height: 660px;
+}
+
+#gallery div{
+	padding: 3px;
+	padding-top: 0px;
 }
