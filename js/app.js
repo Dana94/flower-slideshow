@@ -1,26 +1,11 @@
 let leftButton = document.getElementById('left');
 let rightButton = document.getElementById('right');
+let timerButton = document.getElementById('timer-control');
 let imagePlace = document.getElementById('img-place');
 let image = document.getElementsByClassName('flower');
 
-let images = ['rainbow', 'yellow', 'purple', 'blue'];
+let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white'];
 let index = 0;
-
-
-function resize(){
-	if (image[0].height > image[0].width){
-			console.log('y');
-			
-			// $('.flower').css('margin-top', -50);
-			// $('.flower').css('margin-bottom', -50);
-			
-		}
-		else{
-			console.log('n h: ' + image[0].height + ' w: ' + image[0].width);
-			// $('#img-place').css('padding-top', 120);
-			
-		}
- }
 
 function moveRight(){
 	$("#img-place").fadeOut(1000, function(){
@@ -48,24 +33,21 @@ let timer;
 
 function startTimer(){
 	timer = window.setInterval(moveRight, 10000);
+	timerButton.removeEventListener('click', startTimer);
+	timerButton.addEventListener('click', stopTimer);
 }
 
-// function stopTimer(){
-// 	window.clearInterval(timer);
+function stopTimer(){
+	window.clearInterval(timer);
 
-// 	leftButton.removeEventListener('click', stopTimer);
-// 	rightButton.removeEventListener('click', stopTimer);
+	timerButton.removeEventListener('click', stopTimer);
+	timerButton.addEventListener('click', startTimer);
+}
 
+window.addEventListener('load', startTimer);
 
-// 	//document.addEventListener('click', startTimer);
-// }
+timerButton.addEventListener('click', stopTimer);
 
-//window.addEventListener('load',resize);
-//window.addEventListener('load', startTimer);
-
-//leftButton.addEventListener('click',resize);
 leftButton.addEventListener('click', moveLeft);
 
-//rightButton.addEventListener('click', resize);
 rightButton.addEventListener('click', moveRight);
-

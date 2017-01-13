@@ -5,24 +5,22 @@ div{
 
 
 #img-place{
-	border-left: 4px solid;
-	border-top: 4px solid;
-	height: 608px;
-	padding: 0 auto;
-	padding-top: 2%;
-	/*padding-left: 8%;
-	padding-right: 8%;*/
+	height: 90vh;/*608px;*/
+	padding-top: 1px;
+	padding-left: 15%;
+	padding-right: 15%;
+	overflow: auto;
 }
 
 .flower{
 	transform: scale(.9,.9);
-	object-fit: fill;
-	box-shadow: 10px 5px 5px black;
+	object-fit: contain;
+	height: 100vh;
+	width: 100vh;
 }
 
 img{
 	box-shadow: 10px 5px 5px black;
-	
 }
 
 button{
@@ -31,7 +29,14 @@ button{
 }
 
 #buttons{
-	border-left: 4px solid;
+	border-bottom: 4px solid;
+}
+
+#timer-control{
+	width: 200px;
+	border: 5px solid;
+	font-size: 20px;
+	padding: 9px 1px 9px 1px;
 }
 
 #left{
@@ -44,7 +49,9 @@ button{
 
 #gallery{
 	border: 4px solid;
-	height: 660px;
+	height: 100vh;/*660px;*/
+	overflow: auto;
+	border-left: 4px solid;
 }
 
 #gallery div{
