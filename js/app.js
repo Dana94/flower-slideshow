@@ -4,9 +4,10 @@ let timerButton = document.getElementById('timer-control');
 let imagePlace = document.getElementById('img-place');
 let gallery = document.getElementById('gallery-row');
 
-let gridButton; //= document.getElementById('grid-layout');
+let gridButton = document.getElementById('grid-layout');
+let columnButton; 
 let changeGallery = document.getElementById('change-gallery');
-let columnButton = document.getElementById('column-layout');
+
 
 let image = document.getElementsByClassName('flower');
 
@@ -15,17 +16,30 @@ let index = 0;
 
 function fillGallery(){
 	for(let i = 0; i < images.length; i++){
-		gallery.innerHTML += '<div class="col-xs-3"> <img class="img-responsive" src="images/' + images[i] + '-rose.jpg"> </div>';
+		gallery.innerHTML += '<img class="img-responsive" src="images/' + images[i] + '-rose.jpg">';
 	}
+	
 }
 
 function changetoGrid(){
+	$('#gallery').removeClass('col-xs-2');
+	$('#gallery').addClass('col-xs-4');
+
+	$('#frame').removeClass('col-xs-10');
+	$('#frame').addClass('col-xs-8');
+
 	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout">column layout</button>';
 	columnButton = document.getElementById('column-layout');
 	columnButton.addEventListener('click', changetoColumn);
 }
 
 function changetoColumn(){
+	$('#gallery').removeClass('col-xs-4');
+	$('#gallery').addClass('col-xs-2');
+
+	$('#frame').removeClass('col-xs-8');
+	$('#frame').addClass('col-xs-10');
+
 	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout">grid layout</button>';
 	gridButton = document.getElementById('grid-layout');
 	gridButton.addEventListener('click', changetoGrid);
@@ -78,6 +92,4 @@ leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
 
-//gridButton.addEventListener('click', changetoGrid);
-
-columnButton.addEventListener('click', changetoColumn);
+gridButton.addEventListener('click', changetoGrid);
