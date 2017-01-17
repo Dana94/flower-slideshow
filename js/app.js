@@ -2,7 +2,9 @@ let leftButton = document.getElementById('left');
 let rightButton = document.getElementById('right');
 let timerButton = document.getElementById('timer-control');
 let imagePlace = document.getElementById('img-place');
-let gallery = document.getElementById('gallery-row');
+
+let gallery = document.getElementById('gallery');
+let galleryRows = document.getElementsByClassName('gallery-row');
 
 let gridButton = document.getElementById('grid-layout');
 let columnButton; 
@@ -14,9 +16,36 @@ let image = document.getElementsByClassName('flower');
 let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white'];
 let index = 0;
 
-function fillGallery(){
+function fillGalleryColumn(){
 	for(let i = 0; i < images.length; i++){
-		gallery.innerHTML += '<img class="img-responsive" src="images/' + images[i] + '-rose.jpg">';
+		galleryRows[0].innerHTML += '<img class="img-responsive" src="images/' + images[i] + '-rose.jpg">';
+	}
+	
+}
+
+function fillGalleryGrid(){
+	let numberOfRows = Math.ceil(images.length/4);
+	let rowNumber = 0;
+	let imgCount = 0;
+	let imgCountStop = 4;
+	while(rowNumber < numberOfRows){
+		console.log(gallery.innerhtml);
+		galleryRows = document.getElementsByClassName('gallery-row');
+		console.log("galleryrows: " + galleryRows.length);
+		console.log("row num: " + rowNumber);
+
+		for(let i = imgCount; i < imgCountStop; i++){
+			galleryRows[rowNumber].innerHTML += '<div class="col-xs-3"> <img class="img-responsive" src="images/' + images[i] + '-rose.jpg"> </div>';
+			console.log(images[i]);
+		}
+
+		imgCount += 4;
+		imgCountStop += 4;
+		rowNumber++;
+		let imgDiv = document.createElement('div');
+		imgDiv.class = 'gallery-row';
+		gallery.appendChild(imgDiv);
+
 	}
 	
 }
@@ -84,7 +113,8 @@ function stopTimer(){
 
 window.addEventListener('load', startTimer);
 
-//window.addEventListener('load', fillGallery);
+//window.addEventListener('load', fillGalleryColumn);
+window.addEventListener('load', fillGalleryGrid);
 
 timerButton.addEventListener('click', stopTimer);
 
