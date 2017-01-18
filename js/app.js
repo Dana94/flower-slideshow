@@ -5,6 +5,7 @@ let imagePlace = document.getElementById('img-place');
 
 let gallery = document.getElementById('gallery');
 let galleryRows = document.getElementsByClassName('gallery-row');
+let html = "";
 
 let gridButton = document.getElementById('grid-layout');
 let columnButton; 
@@ -16,53 +17,10 @@ let image = document.getElementsByClassName('flower');
 let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white'];
 let index = 0;
 
+//filling the gallery in column and grid format
+
 function fillGalleryColumn(){
-	for(let i = 0; i < images.length; i++){
-		galleryRows[0].innerHTML += '<img class="img-responsive" src="images/' + images[i] + '-rose.jpg">';
-	}
-	
-}
-
-function fillGalleryGrid(){
-	let numberOfRows = Math.ceil(images.length/4);
-	let rowNumber = 0;
-	let imgCount = 0;
-	let imgCountStop = 4;
-	while(rowNumber < numberOfRows){
-		console.log(gallery.innerhtml);
-		galleryRows = document.getElementsByClassName('gallery-row');
-		console.log("galleryrows: " + galleryRows.length);
-		console.log("row num: " + rowNumber);
-
-		for(let i = imgCount; i < imgCountStop; i++){
-			galleryRows[rowNumber].innerHTML += '<div class="col-xs-3"> <img class="img-responsive" src="images/' + images[i] + '-rose.jpg"> </div>';
-			console.log(images[i]);
-		}
-
-		imgCount += 4;
-		imgCountStop += 4;
-		rowNumber++;
-		let imgDiv = document.createElement('div');
-		imgDiv.class = 'gallery-row';
-		gallery.appendChild(imgDiv);
-
-	}
-	
-}
-
-function changetoGrid(){
-	$('#gallery').removeClass('col-xs-2');
-	$('#gallery').addClass('col-xs-4');
-
-	$('#frame').removeClass('col-xs-10');
-	$('#frame').addClass('col-xs-8');
-
-	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout">column layout</button>';
-	columnButton = document.getElementById('column-layout');
-	columnButton.addEventListener('click', changetoColumn);
-}
-
-function changetoColumn(){
+	//changetocolumn method
 	$('#gallery').removeClass('col-xs-4');
 	$('#gallery').addClass('col-xs-2');
 
@@ -71,8 +29,88 @@ function changetoColumn(){
 
 	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout">grid layout</button>';
 	gridButton = document.getElementById('grid-layout');
-	gridButton.addEventListener('click', changetoGrid);
+	gridButton.addEventListener('click', fillGalleryGrid);
+	//////
+	html = '<div class="row gallery-row">';
+	for(let i = 0; i < images.length; i++){
+		html += '<img class="img-responsive" src="images/' + images[i] + '-rose.jpg">';
+	}
+	html += '</div';
+	$('#gallery').html(html);
+	
 }
+
+function fillGalleryGrid(){
+	//changetogrid method
+	$('#gallery').removeClass('col-xs-2');
+	$('#gallery').addClass('col-xs-4');
+
+	$('#frame').removeClass('col-xs-10');
+	$('#frame').addClass('col-xs-8');
+
+	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout">column layout</button>';
+	columnButton = document.getElementById('column-layout');
+	columnButton.addEventListener('click', fillGalleryColumn);
+	//////
+	let numberOfRows = Math.ceil(images.length/4);
+	let rowNumber = 0;
+	let imgCount = 0;
+	let imgCountStop = 4;
+	html = '';
+	while(rowNumber < numberOfRows){
+		html += '<div class="row gallery-row">';
+
+		for(let i = imgCount; i < imgCountStop; i++){
+			html += '<div class="col-xs-3"> <img class="img-responsive" src="images/' + images[i] + '-rose.jpg"> </div>';
+		}
+
+		html += '</div>';
+		$('#gallery').html(html);
+		imgCount += 4;
+		imgCountStop += 4;
+		if ((imgCountStop - 1) >= images.length){
+			imgCountStop = images.length - imgCount;
+			imgCountStop += imgCount;
+		}
+		
+		rowNumber++;
+	}	
+}
+
+//make images clickable
+
+function clickableImages(){
+	//get a query of all imgs in the gallery and loop through to add an event listener to each that will 
+	//disply its image when clicked (and the slideshow will go from there?)
+}
+
+//changing the buttons for appropriate grid or column label
+
+// function changetoGrid(){
+// 	$('#gallery').removeClass('col-xs-2');
+// 	$('#gallery').addClass('col-xs-4');
+
+// 	$('#frame').removeClass('col-xs-10');
+// 	$('#frame').addClass('col-xs-8');
+
+// 	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout">column layout</button>';
+// 	columnButton = document.getElementById('column-layout');
+// 	columnButton.addEventListener('click', changetoColumn);
+// }
+
+// function changetoColumn(){
+// 	$('#gallery').removeClass('col-xs-4');
+// 	$('#gallery').addClass('col-xs-2');
+
+// 	$('#frame').removeClass('col-xs-8');
+// 	$('#frame').addClass('col-xs-10');
+
+// 	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout">grid layout</button>';
+// 	gridButton = document.getElementById('grid-layout');
+// 	gridButton.addEventListener('click', changetoGrid);
+// }
+
+//direction for moving through images
 
 function moveRight(){
 	$("#img-place").fadeOut(1000, function(){
@@ -96,6 +134,8 @@ function moveLeft(){
 	$("#img-place").fadeIn(2000);
 };
 
+//timer for automatic slideshow
+
 let timer;
 
 function startTimer(){
@@ -111,15 +151,16 @@ function stopTimer(){
 	timerButton.addEventListener('click', startTimer);
 }
 
+//event listeners
+
 window.addEventListener('load', startTimer);
 
-//window.addEventListener('load', fillGalleryColumn);
-window.addEventListener('load', fillGalleryGrid);
+window.addEventListener('load', fillGalleryColumn);
+
+gridButton.addEventListener('click', fillGalleryGrid);
 
 timerButton.addEventListener('click', stopTimer);
 
 leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
-
-gridButton.addEventListener('click', changetoGrid);
