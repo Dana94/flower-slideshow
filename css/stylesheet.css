@@ -3,7 +3,6 @@ div{
 	margin-bottom: 0;
 }
 
-
 #img-place{
 	height: 90vh;/*608px;*/
 	padding-top: 1px;
@@ -24,28 +23,13 @@ div{
 	width: 100vh;
 }
 
-img{
-	/*box-shadow: 10px 5px 5px black;*/
-}
-
 button{
 	width: 100px;
 	border: 5px solid;
 }
 
-#grid-layout, #column-layout{
-	width: 170px;
-}
-
 #buttons{
 	border-bottom: 4px solid;
-}
-
-#timer-control{
-	width: 200px;
-	border: 5px solid;
-	font-size: 20px;
-	padding: 9px 1px 9px 1px;
 }
 
 #left{
@@ -60,8 +44,7 @@ button{
 	height: 100vh;/*660px;*/
 	overflow: auto;
 	border-left: 2px solid;
-	border-right: 4px solid;
-	
+	border-right: 4px solid;	
 }
 
 #gallery div{

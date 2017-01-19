@@ -2,6 +2,7 @@ let leftButton = document.getElementById('left');
 let rightButton = document.getElementById('right');
 let timerButton = document.getElementById('timer-control');
 let imagePlace = document.getElementById('img-place');
+let smallFlowers;
 
 let gallery = document.getElementById('gallery');
 let galleryRows = document.getElementsByClassName('gallery-row');
@@ -14,7 +15,7 @@ let changeGallery = document.getElementById('change-gallery');
 
 let image = document.getElementsByClassName('flower');
 
-let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white'];
+let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white', 'pale'];
 let index = 0;
 
 //filling the gallery in column and grid format
@@ -27,16 +28,24 @@ function fillGalleryColumn(){
 	$('#frame').removeClass('col-xs-8');
 	$('#frame').addClass('col-xs-10');
 
-	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout">grid layout</button>';
+	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>';
 	gridButton = document.getElementById('grid-layout');
 	gridButton.addEventListener('click', fillGalleryGrid);
 	//////
 	html = '<div class="row gallery-row">';
 	for(let i = 0; i < images.length; i++){
-		html += '<img class="img-responsive" src="images/' + images[i] + '-rose.jpg">';
+		html += '<img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg">';
 	}
 	html += '</div';
 	$('#gallery').html(html);
+
+	//making the images clickable
+	smallFlowers = document.getElementsByClassName('small-flower');
+	for(let i = 0; i < smallFlowers.length; i++){
+		smallFlowers[i].addEventListener('click', function(){
+			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
+		});
+	}
 	
 }
 
@@ -48,7 +57,7 @@ function fillGalleryGrid(){
 	$('#frame').removeClass('col-xs-10');
 	$('#frame').addClass('col-xs-8');
 
-	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout">column layout</button>';
+	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>';
 	columnButton = document.getElementById('column-layout');
 	columnButton.addEventListener('click', fillGalleryColumn);
 	//////
@@ -61,7 +70,7 @@ function fillGalleryGrid(){
 		html += '<div class="row gallery-row">';
 
 		for(let i = imgCount; i < imgCountStop; i++){
-			html += '<div class="col-xs-3"> <img class="img-responsive" src="images/' + images[i] + '-rose.jpg"> </div>';
+			html += '<div class="col-xs-3"> <img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg"> </div>';
 		}
 
 		html += '</div>';
@@ -74,14 +83,15 @@ function fillGalleryGrid(){
 		}
 		
 		rowNumber++;
-	}	
-}
+	}
+	//making the images clickable
+	smallFlowers = document.getElementsByClassName('small-flower');
+	for(let i = 0; i < smallFlowers.length; i++){
+		smallFlowers[i].addEventListener('click', function(){
+			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
+		});
+	}
 
-//make images clickable
-
-function clickableImages(){
-	//get a query of all imgs in the gallery and loop through to add an event listener to each that will 
-	//disply its image when clicked (and the slideshow will go from there?)
 }
 
 //changing the buttons for appropriate grid or column label
@@ -139,6 +149,7 @@ function moveLeft(){
 let timer;
 
 function startTimer(){
+	timerButton.innerHTML = '<span class="glyphicon glyphicon-pause" aria-hidden="true"></span>';
 	timer = window.setInterval(moveRight, 10000);
 	timerButton.removeEventListener('click', startTimer);
 	timerButton.addEventListener('click', stopTimer);
@@ -146,7 +157,7 @@ function startTimer(){
 
 function stopTimer(){
 	window.clearInterval(timer);
-
+	timerButton.innerHTML = '<span class="glyphicon glyphicon-play" aria-hidden="true"></span>';
 	timerButton.removeEventListener('click', stopTimer);
 	timerButton.addEventListener('click', startTimer);
 }
