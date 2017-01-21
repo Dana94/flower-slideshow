@@ -12,6 +12,8 @@ let gridButton = document.getElementById('grid-layout');
 let columnButton; 
 let changeGallery = document.getElementById('change-gallery');
 
+let uploadButton = document.getElementById('upload');
+$('#upload').text('choose');
 
 let image = document.getElementsByClassName('flower');
 
@@ -34,7 +36,7 @@ function fillGalleryColumn(){
 	//////
 	html = '<div class="row gallery-row">';
 	for(let i = 0; i < images.length; i++){
-		html += '<img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg">';
+		html += '<img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg" alt="'+ images[i] + 'rose">';
 	}
 	html += '</div';
 	$('#gallery').html(html);
@@ -70,7 +72,7 @@ function fillGalleryGrid(){
 		html += '<div class="row gallery-row">';
 
 		for(let i = imgCount; i < imgCountStop; i++){
-			html += '<div class="col-xs-3"> <img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg"> </div>';
+			html += '<div class="col-xs-3"> <img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg" alt="'+ images[i] + 'rose"> </div>';
 		}
 
 		html += '</div>';
