@@ -13,14 +13,13 @@ let columnButton;
 let changeGallery = document.getElementById('change-gallery');
 
 let uploadButton = document.getElementById('upload');
-$('#upload').text('choose');
 
 let image = document.getElementsByClassName('flower');
 
 let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white', 'pale'];
 let index = 0;
 
-//filling the gallery in column and grid format
+//filling the gallery in column or grid format
 
 function fillGalleryColumn(){
 	//changetocolumn method
@@ -96,31 +95,11 @@ function fillGalleryGrid(){
 
 }
 
-//changing the buttons for appropriate grid or column label
+//upload image to gallery
 
-// function changetoGrid(){
-// 	$('#gallery').removeClass('col-xs-2');
-// 	$('#gallery').addClass('col-xs-4');
+function upload(){
 
-// 	$('#frame').removeClass('col-xs-10');
-// 	$('#frame').addClass('col-xs-8');
-
-// 	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout">column layout</button>';
-// 	columnButton = document.getElementById('column-layout');
-// 	columnButton.addEventListener('click', changetoColumn);
-// }
-
-// function changetoColumn(){
-// 	$('#gallery').removeClass('col-xs-4');
-// 	$('#gallery').addClass('col-xs-2');
-
-// 	$('#frame').removeClass('col-xs-8');
-// 	$('#frame').addClass('col-xs-10');
-
-// 	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout">grid layout</button>';
-// 	gridButton = document.getElementById('grid-layout');
-// 	gridButton.addEventListener('click', changetoGrid);
-// }
+}
 
 //direction for moving through images
 
@@ -177,3 +156,5 @@ timerButton.addEventListener('click', stopTimer);
 leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
+
+uploadButton.addEventListener('click', upload);
