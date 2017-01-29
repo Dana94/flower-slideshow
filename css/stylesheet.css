@@ -1,12 +1,17 @@
+body{
+	max-width: 100%;
+	min-height: 100%;
+}
+
 div{
 	background: #272222;
-	margin-bottom: 0;
+	/*margin-bottom: 0;*/
 }
 
 #img-place{
-	height: 90vh;/*608px;*/
+	/*height: 100%;*/
 	padding-top: 1px;
-	overflow: auto;
+	/*overflow: auto;*/
 }
 
 #img-place img{
@@ -19,21 +24,38 @@ div{
 .flower{
 	transform: scale(.9,.9);
 	object-fit: contain;
-	height: 100vh;
-	width: 100vh;
+	height: 80rem;
+	width: 80rem;
 }
 
-button{
-	width: 90px;
+button{	
 	border: 5px solid;
+	padding: 0;
+	/*display: inline-block;
+	margin-right: auto;
+	margin-left: auto;*/
 }
+
+/*@media (min-width: 670px){
+	button{
+		width: 50%;
+	}
+
+}
+
+@media (max-width: 669px){
+	button{
+		width: 10%;
+	}
+
+}*/
 
 #buttons{
 	border-bottom: 4px solid;
 }
 
 #gallery{
-	height: 100vh;/*660px;*/
+	height: 100%;
 	overflow: auto;
 	border-left: 2px solid;
 	border-right: 4px solid;	

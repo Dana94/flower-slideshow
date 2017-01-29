@@ -157,4 +157,4 @@ leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
 
-uploadButton.addEventListener('click', upload);
+//uploadButton.addEventListener('click', upload);
