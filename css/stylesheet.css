@@ -1,17 +1,25 @@
-body{
+/*html, body{
 	max-width: 100%;
 	min-height: 100%;
-}
+	
+	margin: 0;
+	padding: 0;
+}*/
 
+/*.container-fluid{
+	min-height: 100%;
+
+}
+*/
 div{
 	background: #272222;
-	/*margin-bottom: 0;*/
+	margin-bottom: 0;
 }
 
 #img-place{
-	/*height: 100%;*/
+	
 	padding-top: 1px;
-	/*overflow: auto;*/
+	overflow: auto;
 }
 
 #img-place img{
@@ -31,8 +39,8 @@ div{
 button{	
 	border: 5px solid;
 	padding: 0;
-	/*display: inline-block;
-	margin-right: auto;
+	display: inline-block;
+	/*margin-right: auto;
 	margin-left: auto;*/
 }
 
@@ -55,7 +63,7 @@ button{
 }
 
 #gallery{
-	height: 100%;
+	
 	overflow: auto;
 	border-left: 2px solid;
 	border-right: 4px solid;	
@@ -63,4 +71,11 @@ button{
 
 #gallery div{
 	padding: 0;
+}
+
+body, .container-fluid{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
 }
