@@ -23,11 +23,11 @@ let index = 0;
 
 function fillGalleryColumn(){
 	//changetocolumn method
-	$('#gallery').removeClass('col-xs-4');
-	$('#gallery').addClass('col-xs-2');
+	$('#gallery').removeClass('col-lg-4 col-md-4 col-xs-4');
+	$('#gallery').addClass('col-lg-2 col-md-2 col-xs-2');
 
-	$('#frame').removeClass('col-xs-8');
-	$('#frame').addClass('col-xs-10');
+	$('#frame').removeClass('col-lg-8 col-md-8 col-xs-8');
+	$('#frame').addClass('col-lg-10 col-md-10 col-xs-10');
 
 	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>';
 	gridButton = document.getElementById('grid-layout');
@@ -52,11 +52,11 @@ function fillGalleryColumn(){
 
 function fillGalleryGrid(){
 	//changetogrid method
-	$('#gallery').removeClass('col-xs-2');
-	$('#gallery').addClass('col-xs-4');
+	$('#gallery').removeClass('col-lg-2 col-md-2 col-xs-2');
+	$('#gallery').addClass('col-lg-4 col-md-4 col-xs-4');
 
-	$('#frame').removeClass('col-xs-10');
-	$('#frame').addClass('col-xs-8');
+	$('#frame').removeClass('col-lg-10 col-md-10 col-xs-10');
+	$('#frame').addClass('col-lg-8 col-md-8 col-xs-8');
 
 	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>';
 	columnButton = document.getElementById('column-layout');
@@ -158,3 +158,13 @@ leftButton.addEventListener('click', moveLeft);
 rightButton.addEventListener('click', moveRight);
 
 //uploadButton.addEventListener('click', upload);
+
+//change layout according to screen size
+// let div = document.getElementsByTagName('div');
+// let width = window.innerWidth;
+// let height = window.innerHeight;
+// for(let i = 0; i < div.length; i++){
+// 	div[i].height = height;
+// 	div[i].width = width;
+// }
+
