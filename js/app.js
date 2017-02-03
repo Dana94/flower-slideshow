@@ -29,7 +29,7 @@ function fillGalleryColumn(){
 	$('#frame').removeClass('col-lg-8 col-md-8 col-xs-8');
 	$('#frame').addClass('col-lg-10 col-md-10 col-xs-10');
 
-	changeGallery.innerHTML = '<button class="btn-lg" id="grid-layout"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>';
+	changeGallery.innerHTML = '<button class="btn-sm" id="grid-layout"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>';
 	gridButton = document.getElementById('grid-layout');
 	gridButton.addEventListener('click', fillGalleryGrid);
 	//////
@@ -58,7 +58,7 @@ function fillGalleryGrid(){
 	$('#frame').removeClass('col-lg-10 col-md-10 col-xs-10');
 	$('#frame').addClass('col-lg-8 col-md-8 col-xs-8');
 
-	changeGallery.innerHTML = '<button class="btn-lg" id="column-layout"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>';
+	changeGallery.innerHTML = '<button class="btn-sm" id="column-layout"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>';
 	columnButton = document.getElementById('column-layout');
 	columnButton.addEventListener('click', fillGalleryColumn);
 	//////
