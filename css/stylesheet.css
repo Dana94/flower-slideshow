@@ -25,9 +25,9 @@ div{
 }
 
 button{	
-	border: 5px solid;
+	/*border: 5px solid;*/
 	/*padding: 0;*/
-	display: block;/*inline-block;*/
+	display: inline-block;
 }
 
 
@@ -52,4 +52,49 @@ body, .container-fluid{
 	width: 100%;
 
 
+}
+
+#grid-layout, #column-layout{
+	margin-left: -15px;
+}
+
+
+
+@media(min-width: 768px){
+	button{
+		height: 6rem;
+		width: 6rem;
+	}
+
+
+
+	.glyphicon{
+		transform: scale(1.5,1.5);
+	}
+}
+
+@media(max-width: 767px){
+	button{
+		height: 5rem;
+		width: 5rem;
+	}
+
+	#change-gallery{
+		display: none;
+	}
+
+	.glyphicon{
+		transform: scale(1.5,1.5);
+	}
+}
+
+@media(max-width: 468px){
+	button{
+		height: 4rem;
+		width: 4rem;
+	}
+
+	#change-gallery{
+		display: none;
+	}
 }
