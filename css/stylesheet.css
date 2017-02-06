@@ -58,15 +58,11 @@ body, .container-fluid{
 	margin-left: -15px;
 }
 
-
-
 @media(min-width: 768px){
 	button{
 		height: 6rem;
 		width: 6rem;
 	}
-
-
 
 	.glyphicon{
 		transform: scale(1.5,1.5);
@@ -88,7 +84,7 @@ body, .container-fluid{
 	}
 }
 
-@media(max-width: 468px){
+@media(max-width: 430px){
 	button{
 		height: 4rem;
 		width: 4rem;
