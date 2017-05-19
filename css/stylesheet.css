@@ -4,6 +4,10 @@ div{
 	margin-bottom: 0;
 }
 
+#fileElem{
+	display:none;
+}
+
 #img-place{
 	
 	padding-top: 1px;

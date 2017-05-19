@@ -10,19 +10,22 @@ let html = "";
 
 let gridButton = document.getElementById('grid-layout');
 let columnButton; 
+
+let gridForm = false;
+
 let changeGallery = document.getElementById('change-gallery');
 
 let uploadButton = document.getElementById('upload');
 
 let image = document.getElementsByClassName('flower');
 
-let images = ['rainbow', 'yellow', 'purple', 'blue', 'frost', 'pink', 'white', 'pale'];
+let images = ['rainbow-rose.jpg', 'yellow-rose.jpg', 'purple-rose.jpg', 'blue-rose.jpg', 'frost-rose.jpg', 'pink-rose.jpg', 'white-rose.jpg', 'pale-rose.jpg'];
 let index = 0;
 
 //filling the gallery in column or grid format
 
+//gallery is displayed in column format
 function fillGalleryColumn(){
-	//changetocolumn method
 	$('#gallery').removeClass('col-lg-4 col-md-4 col-xs-4');
 	$('#gallery').addClass('col-lg-2 col-md-2 col-xs-2');
 
@@ -35,7 +38,7 @@ function fillGalleryColumn(){
 	//////
 	html = '<div class="row gallery-row">';
 	for(let i = 0; i < images.length; i++){
-		html += '<img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg" alt="'+ images[i] + 'rose">';
+		html += '<img class="img-responsive small-flower" src="images/' + images[i] + '" alt="'+ images[i] + '">';
 	}
 	html += '</div';
 	$('#gallery').html(html);
@@ -47,11 +50,14 @@ function fillGalleryColumn(){
 			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
 		});
 	}
+
+	gridForm = false;
 	
 }
 
+
+//gallery is displayed in grid format
 function fillGalleryGrid(){
-	//changetogrid method
 	$('#gallery').removeClass('col-lg-2 col-md-2 col-xs-2');
 	$('#gallery').addClass('col-lg-4 col-md-4 col-xs-4');
 
@@ -71,7 +77,7 @@ function fillGalleryGrid(){
 		html += '<div class="row gallery-row">';
 
 		for(let i = imgCount; i < imgCountStop; i++){
-			html += '<div class="col-xs-3"> <img class="img-responsive small-flower" src="images/' + images[i] + '-rose.jpg" alt="'+ images[i] + 'rose"> </div>';
+			html += '<div class="col-xs-3"> <img class="img-responsive small-flower" src="images/' + images[i] + '" alt="'+ images[i] + '"> </div>';
 		}
 
 		html += '</div>';
@@ -93,23 +99,18 @@ function fillGalleryGrid(){
 		});
 	}
 
-}
-
-//upload image to gallery
-
-function upload(){
+	gridForm = true;
 
 }
 
-//direction for moving through images
-
+//directions for moving through images
 function moveRight(){
 	$("#img-place").fadeOut(1000, function(){
 		index++;
 		if(index == images.length){
 			index = 0;
 		}
-		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");	
+		image[0].setAttribute('src', "images/" + images[index] + "");	
 	}); 
 	$("#img-place").fadeIn(2000);
 }
@@ -120,13 +121,12 @@ function moveLeft(){
 		if(index < 0){
 			index = images.length - 1;
 		}
-		image[0].setAttribute('src', "images/" + images[index] + "-rose.jpg");
+		image[0].setAttribute('src', "images/" + images[index] + "");
 	}); 
 	$("#img-place").fadeIn(2000);
 };
 
 //timer for automatic slideshow
-
 let timer;
 
 function startTimer(){
@@ -143,6 +143,23 @@ function stopTimer(){
 	timerButton.addEventListener('click', startTimer);
 }
 
+//not mine, slightly modified
+//Source for handleFiles() code below:
+//https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Using_hidden_file_input_elements_using_the_click()_method
+function handleFiles() {
+  let fileList = this.files;
+  //let numFiles = fileList.length;
+
+  for(let i = 0; i < fileList.length; i++){
+  		images.push(fileList[i]);
+  }
+  console.log(images);
+  
+  //find out which gallery form is displayed, and reload it
+  gridForm ? fillGalleryGrid() : fillGalleryColumn();
+}
+//end source code
+
 //event listeners
 
 window.addEventListener('load', startTimer);
@@ -157,8 +174,6 @@ leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
 
-//uploadButton.addEventListener('click', upload);
-
 //change layout according to screen size
 // let div = document.getElementsByTagName('div');
 // let width = window.innerWidth;
@@ -168,3 +183,18 @@ rightButton.addEventListener('click', moveRight);
 // 	div[i].width = width;
 // }
 
+//not mine, slightly modified
+//Source for code below:
+//https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Using_hidden_file_input_elements_using_the_click()_method
+
+let fileElem = document.getElementById("fileElem");
+
+uploadButton.addEventListener("click", function (e) {
+  if (fileElem) {
+    fileElem.click();
+  }
+  e.preventDefault(); // prevent navigation to "#"
+}, false);
+
+fileElem.addEventListener("change", handleFiles, false);
+//end source code

@@ -19,9 +19,13 @@
 								<button class="btn" id="grid-layout"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>
 							</div>
 							<div class="col-lg-2 col-sm-2 col-xs-2" id="upload-img"> 
+								<!-- not mine, slightly modified
+									 Source for <input> code below:
+										https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Using_hidden_file_input_elements_using_the_click()_method -->
+
+								<input type="file" id="fileElem" multiple accept="image/*">
+
 								<button class="btn" id="upload"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></button>
-								<!-- <input type="file" name="imagefile" accept="image/jpeg, image/png" id="upload"> -->
-								<!-- <input type="file" id="file" name="files[]" multiple> -->
 							</div>
 						
 							<div class="btn-group col-lg-2 col-lg-offset-1 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-2" role="group">	
