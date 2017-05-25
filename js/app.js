@@ -19,7 +19,15 @@ let uploadButton = document.getElementById('upload');
 
 let image = document.getElementsByClassName('flower');
 
-let images = ['rainbow-rose.jpg', 'yellow-rose.jpg', 'purple-rose.jpg', 'blue-rose.jpg', 'frost-rose.jpg', 'pink-rose.jpg', 'white-rose.jpg', 'pale-rose.jpg'];
+let images = ['<img class="img-responsive small-flower" src="images/rainbow-rose.jpg" alt="rainbow rose">',
+		      '<img class="img-responsive small-flower" src="images/yellow-rose.jpg" alt="yellow rose">',
+		      '<img class="img-responsive small-flower" src="images/purple-rose.jpg" alt="purple rose">',
+		      '<img class="img-responsive small-flower" src="images/blue-rose.jpg" alt="blue rose">',
+		      '<img class="img-responsive small-flower" src="images/frost-rose.jpg" alt="frost rose">',
+		      '<img class="img-responsive small-flower" src="images/pink-rose.jpg" alt="pink rose">',
+		      '<img class="img-responsive small-flower" src="images/white-rose.jpg" alt="white rose">',
+		      '<img class="img-responsive small-flower" src="images/pale-rose.jpg" alt="pale rose">'];
+
 let index = 0;
 
 //filling the gallery in column or grid format
@@ -38,7 +46,7 @@ function fillGalleryColumn(){
 	//////
 	html = '<div class="row gallery-row">';
 	for(let i = 0; i < images.length; i++){
-		html += '<img class="img-responsive small-flower" src="images/' + images[i] + '" alt="'+ images[i] + '">';
+		html += images[i];
 	}
 	html += '</div';
 	$('#gallery').html(html);
@@ -48,6 +56,7 @@ function fillGalleryColumn(){
 	for(let i = 0; i < smallFlowers.length; i++){
 		smallFlowers[i].addEventListener('click', function(){
 			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
+			image[0].setAttribute('alt', smallFlowers[i].getAttribute('alt'));
 		});
 	}
 
@@ -77,7 +86,8 @@ function fillGalleryGrid(){
 		html += '<div class="row gallery-row">';
 
 		for(let i = imgCount; i < imgCountStop; i++){
-			html += '<div class="col-xs-3"> <img class="img-responsive small-flower" src="images/' + images[i] + '" alt="'+ images[i] + '"> </div>';
+										 
+			html += '<div class="col-xs-3">' + images[i] + '</div>';
 		}
 
 		html += '</div>';
@@ -96,6 +106,7 @@ function fillGalleryGrid(){
 	for(let i = 0; i < smallFlowers.length; i++){
 		smallFlowers[i].addEventListener('click', function(){
 			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
+			image[0].setAttribute('alt', smallFlowers[i].getAttribute('alt'));
 		});
 	}
 
@@ -110,7 +121,9 @@ function moveRight(){
 		if(index == images.length){
 			index = 0;
 		}
-		image[0].setAttribute('src', "images/" + images[index] + "");	
+		//the order in the images array is the same order as how the small flowers are displayed
+		smallFlowers = document.getElementsByClassName('small-flower');
+		image[0].setAttribute('src', smallFlowers[index].getAttribute('src'));	
 	}); 
 	$("#img-place").fadeIn(2000);
 }
@@ -121,7 +134,9 @@ function moveLeft(){
 		if(index < 0){
 			index = images.length - 1;
 		}
-		image[0].setAttribute('src', "images/" + images[index] + "");
+		//the order in the images array is the same order as how the small flowers are displayed
+		smallFlowers = document.getElementsByClassName('small-flower');
+		image[0].setAttribute('src', smallFlowers[index].getAttribute('src'));	
 	}); 
 	$("#img-place").fadeIn(2000);
 };
@@ -149,14 +164,25 @@ function stopTimer(){
 function handleFiles() {
   let fileList = this.files;
   //let numFiles = fileList.length;
+  let input = [];
+  for(let i = 0, f; f = fileList[i]; i++){
+  		//https://www.html5rocks.com/en/tutorials/file/dndfiles/
+  		//input.push
+  		console.log(escape(f.name));
+  		console.log(escape(f.type));
+  		console.log(escape(f.size));
 
-  for(let i = 0; i < fileList.length; i++){
-  		images.push(fileList[i]);
+  		let reader = new FileReader();
+  		reader.onload = function(theFile){
+  			return function(e){
+
+  			}
+  		}
   }
-  console.log(images);
+  
   
   //find out which gallery form is displayed, and reload it
-  gridForm ? fillGalleryGrid() : fillGalleryColumn();
+  //gridForm ? fillGalleryGrid() : fillGalleryColumn();
 }
 //end source code
 
@@ -174,6 +200,9 @@ leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
 
+//need to change to column when the grid button is removed in the meia query
+//leaving it at grid layout and minimizing screen will keep it at grid until the page is reloaded
+//fix this ^^
 //change layout according to screen size
 // let div = document.getElementsByTagName('div');
 // let width = window.innerWidth;
