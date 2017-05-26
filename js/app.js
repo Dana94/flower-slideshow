@@ -30,6 +30,17 @@ let images = ['<img class="img-responsive small-flower" src="images/rainbow-rose
 
 let index = 0;
 
+
+//if the window width is <= 767 px then the gallery layout should only be in column form, not gallery
+function checkScreenWidth(){
+	let width = window.innerWidth;
+	if(width <= 767 && gridForm){
+		fillGalleryColumn();
+	}
+}
+
+
+
 //filling the gallery in column or grid format
 
 //gallery is displayed in column format
@@ -192,6 +203,10 @@ window.addEventListener('load', startTimer);
 
 window.addEventListener('load', fillGalleryColumn);
 
+window.addEventListener('load', function(){
+	let checker = window.setInterval(checkScreenWidth, 100);
+})
+
 gridButton.addEventListener('click', fillGalleryGrid);
 
 timerButton.addEventListener('click', stopTimer);
@@ -200,12 +215,13 @@ leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
 
-//need to change to column when the grid button is removed in the meia query
+//need to change to column when the grid button is removed in the media query (when width is <= 767px)
 //leaving it at grid layout and minimizing screen will keep it at grid until the page is reloaded
 //fix this ^^
 //change layout according to screen size
 // let div = document.getElementsByTagName('div');
 // let width = window.innerWidth;
+// console.log(width);
 // let height = window.innerHeight;
 // for(let i = 0; i < div.length; i++){
 // 	div[i].height = height;
