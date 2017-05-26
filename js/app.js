@@ -39,8 +39,6 @@ function checkScreenWidth(){
 	}
 }
 
-
-
 //filling the gallery in column or grid format
 
 //gallery is displayed in column format
@@ -74,7 +72,6 @@ function fillGalleryColumn(){
 	gridForm = false;
 	
 }
-
 
 //gallery is displayed in grid format
 function fillGalleryGrid(){
@@ -178,22 +175,20 @@ function handleFiles() {
   let input = [];
   for(let i = 0, f; f = fileList[i]; i++){
   		//https://www.html5rocks.com/en/tutorials/file/dndfiles/
-  		//input.push
-  		console.log(escape(f.name));
-  		console.log(escape(f.type));
-  		console.log(escape(f.size));
-
   		let reader = new FileReader();
-  		reader.onload = function(theFile){
+  		reader.onload = (function(theFile){
   			return function(e){
-
+  				console.log(images);
+  				images.push(['<img class="img-responsive small-flower" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join(''));
+  				console.log(images);
   			}
-  		}
+  		})(f);
+        reader.readAsDataURL(f);
   }
   
-  
   //find out which gallery form is displayed, and reload it
-  //gridForm ? fillGalleryGrid() : fillGalleryColumn();
+  gridForm ? fillGalleryGrid() : fillGalleryColumn();
 }
 //end source code
 
@@ -214,19 +209,6 @@ timerButton.addEventListener('click', stopTimer);
 leftButton.addEventListener('click', moveLeft);
 
 rightButton.addEventListener('click', moveRight);
-
-//need to change to column when the grid button is removed in the media query (when width is <= 767px)
-//leaving it at grid layout and minimizing screen will keep it at grid until the page is reloaded
-//fix this ^^
-//change layout according to screen size
-// let div = document.getElementsByTagName('div');
-// let width = window.innerWidth;
-// console.log(width);
-// let height = window.innerHeight;
-// for(let i = 0; i < div.length; i++){
-// 	div[i].height = height;
-// 	div[i].width = width;
-// }
 
 //not mine, slightly modified
 //Source for code below:
