@@ -169,25 +169,22 @@ function stopTimer(){
 //not mine, slightly modified
 //Source for handleFiles() code below:
 //https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Using_hidden_file_input_elements_using_the_click()_method
+//and
+//https://www.html5rocks.com/en/tutorials/file/dndfiles/
 function handleFiles() {
   let fileList = this.files;
-  //let numFiles = fileList.length;
-  let input = [];
   for(let i = 0, f; f = fileList[i]; i++){
-  		//https://www.html5rocks.com/en/tutorials/file/dndfiles/
   		let reader = new FileReader();
   		reader.onload = (function(theFile){
   			return function(e){
-  				console.log(images);
   				images.push(['<img class="img-responsive small-flower" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join(''));
-  				console.log(images);
   			}
   		})(f);
         reader.readAsDataURL(f);
   }
   
-  //find out which gallery form is displayed, and reload it
+  //find out which gallery form is displayed, and reload it with the new images
   gridForm ? fillGalleryGrid() : fillGalleryColumn();
 }
 //end source code
