@@ -29,13 +29,19 @@ let images = ['<img class="img-responsive small-flower" src="images/rainbow-rose
 		      '<img class="img-responsive small-flower" src="images/pale-rose.jpg" alt="pale rose">'];
 
 let index = 0;
-
+let imglength = images.length;
 
 //if the window width is <= 767 px then the gallery layout should only be in column form, not gallery
-function checkScreenWidth(){
+//if there are any new images added, the gallery will be reloaded instantly
+function checkScreen_and_Images(){
 	let width = window.innerWidth;
 	if(width <= 767 && gridForm){
 		fillGalleryColumn();
+	}
+	let newimglength = images.length
+	if(newimglength > imglength){
+		gridForm ? fillGalleryGrid() : fillGalleryColumn();
+		imglength = newimglength;
 	}
 }
 
@@ -43,6 +49,8 @@ function checkScreenWidth(){
 
 //gallery is displayed in column format
 function fillGalleryColumn(){
+	console.log('col');
+	console.log(images.length);
 	$('#gallery').removeClass('col-lg-4 col-md-4 col-xs-4');
 	$('#gallery').addClass('col-lg-2 col-md-2 col-xs-2');
 
@@ -75,6 +83,8 @@ function fillGalleryColumn(){
 
 //gallery is displayed in grid format
 function fillGalleryGrid(){
+	console.log('grid');
+	console.log(images.length);
 	$('#gallery').removeClass('col-lg-2 col-md-2 col-xs-2');
 	$('#gallery').addClass('col-lg-4 col-md-4 col-xs-4');
 
@@ -93,8 +103,7 @@ function fillGalleryGrid(){
 	while(rowNumber < numberOfRows){
 		html += '<div class="row gallery-row">';
 
-		for(let i = imgCount; i < imgCountStop; i++){
-										 
+		for(let i = imgCount; i < imgCountStop; i++){									 
 			html += '<div class="col-xs-3">' + images[i] + '</div>';
 		}
 
@@ -173,6 +182,7 @@ function stopTimer(){
 //https://www.html5rocks.com/en/tutorials/file/dndfiles/
 function handleFiles() {
   let fileList = this.files;
+
   for(let i = 0, f; f = fileList[i]; i++){
   		let reader = new FileReader();
   		reader.onload = (function(theFile){
@@ -183,9 +193,6 @@ function handleFiles() {
   		})(f);
         reader.readAsDataURL(f);
   }
-  
-  //find out which gallery form is displayed, and reload it with the new images
-  gridForm ? fillGalleryGrid() : fillGalleryColumn();
 }
 //end source code
 
