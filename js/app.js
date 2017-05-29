@@ -49,8 +49,6 @@ function checkScreen_and_Images(){
 
 //gallery is displayed in column format
 function fillGalleryColumn(){
-	console.log('col');
-	console.log(images.length);
 	$('#gallery').removeClass('col-lg-4 col-md-4 col-xs-4');
 	$('#gallery').addClass('col-lg-2 col-md-2 col-xs-2');
 
@@ -74,6 +72,9 @@ function fillGalleryColumn(){
 		smallFlowers[i].addEventListener('click', function(){
 			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
 			image[0].setAttribute('alt', smallFlowers[i].getAttribute('alt'));
+			//When the user clicks on a specific image, the left and right arrows will 
+			//work from that selected image and not the one shown before
+			index = i;
 		});
 	}
 
@@ -83,8 +84,6 @@ function fillGalleryColumn(){
 
 //gallery is displayed in grid format
 function fillGalleryGrid(){
-	console.log('grid');
-	console.log(images.length);
 	$('#gallery').removeClass('col-lg-2 col-md-2 col-xs-2');
 	$('#gallery').addClass('col-lg-4 col-md-4 col-xs-4');
 
@@ -124,6 +123,9 @@ function fillGalleryGrid(){
 		smallFlowers[i].addEventListener('click', function(){
 			image[0].setAttribute('src', smallFlowers[i].getAttribute('src'));
 			image[0].setAttribute('alt', smallFlowers[i].getAttribute('alt'));
+			//When the user clicks on a specific image, the left and right arrows will 
+			//work from that selected image and not the one shown before
+			index = i;
 		});
 	}
 
@@ -203,7 +205,7 @@ window.addEventListener('load', startTimer);
 window.addEventListener('load', fillGalleryColumn);
 
 window.addEventListener('load', function(){
-	let checker = window.setInterval(checkScreenWidth, 100);
+	let checker = window.setInterval(checkScreen_and_Images, 100);
 })
 
 gridButton.addEventListener('click', fillGalleryGrid);
